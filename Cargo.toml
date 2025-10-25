@@ -1,0 +1,42 @@
+[package]
+name    = "espump"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+defmt = "1.0.1"
+embassy-executor = "0.9.1"
+embassy-net = { version = "0.7.1", features = [
+    "dhcpv4",
+    "medium-ethernet",
+    "tcp",
+    "udp",
+] }
+embassy-time = "0.5.0"
+embedded-io-async = "0.6.1"
+esp-alloc = "0.9.0"
+esp-backtrace = { version = "0.18.0", features = ["panic-handler", "defmt", "esp32"] }
+esp-bootloader-esp-idf = { version = "0.3.0", features = ["esp32"] }
+esp-hal = { version = "1.0.0-rc.1", features = ["defmt", "unstable", "esp32"] }
+esp-rtos = { version = "0.1.1", features = ["esp-radio", "embassy", "defmt", "esp32"] }
+esp-radio = { version = "0.16.0", features = [
+    "defmt",
+    "unstable",
+    "wifi",
+    "esp32",
+] }
+static_cell = "2.1.0"
+rust-mqtt = { version = "0.3.0", default-features = false }
+rand_core = "0.6.4"
+embedded-hal-bus = { version = "0.3.0", features = ["async"] } # , features = ["async"]
+embedded-hal = "1.0.0"
+critical-section = "1.2.0"
+embassy-sync = "0.7.2"
+esp-println = { version = "0.16.0", features = ["defmt-espflash", "esp32"] }
+
+[profile.release]
+debug            = true
+debug-assertions = true
+lto              = "fat"
+codegen-units    = 1
