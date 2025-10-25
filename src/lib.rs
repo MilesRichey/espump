@@ -297,6 +297,7 @@ where
                     let raw_temp = u32::from_be_bytes(data);
                     // Convert to Celsius by dividing by 65536.0
                     let temp_celsius = (raw_temp as f32) / 65536.0;
+                    let temp_celsius = temp_celsius - 3.0; // Sensor seems high by ~3 C
                     Ok(temp_celsius)
                 }
                 Err(e) => Err(e),
